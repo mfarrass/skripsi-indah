@@ -1,0 +1,10 @@
+.tbl_proses {
+  text-decoration: none;
+  color: #fff;
+}
+
+.tbl_proses:hover{
+  color: rgb(206, 206, 206);
+  text-decoration: none;
+  transition: 0.8s;
+}
