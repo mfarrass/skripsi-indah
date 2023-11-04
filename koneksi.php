@@ -1,6 +1,6 @@
 <?php
 // koneksi database
-$conn = mysqli_connect("localhost", "root", "", "bayukmeans");
+$conn = mysqli_connect("localhost", "root", "", "indahkmeans");
 
 // tambah barang
 if(isset($_POST['addnewkepkel'])){
