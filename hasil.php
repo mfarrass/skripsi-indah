@@ -66,8 +66,8 @@ require 'koneksi.php';
             </div>
             
             <?php
-            // $query = $conn->query("SELECT * FROM dt_lok m, dt_kk s WHERE s.id_kk = m.id_kk");
-            $query = $conn->query("SELECT * FROM dt_kk");
+            // $query = $conn->query("SELECT * FROM dt_lok m, data_prov s WHERE s.id_prov = m.id_prov");
+            $query = $conn->query("SELECT * FROM data_prov");
             
             // Check connection
             if (mysqli_connect_errno())
@@ -162,20 +162,20 @@ require 'koneksi.php';
               echo "Failed to connect to MySQL: " . mysqli_connect_error();
               exit;
             }
-            // $query = $conn->query("SELECT * FROM dt_lok m, dt_kk s WHERE s.id_kk = m.id_kk");
-            $query = $conn->query("SELECT * FROM dt_kk");
+            // $query = $conn->query("SELECT * FROM dt_lok m, data_prov s WHERE s.id_prov = m.id_prov");
+            $query = $conn->query("SELECT * FROM data_prov");
             $data=[];
             //masukan data ke array data
             while($row=$query->fetch_assoc()){
-              $data[]=[$row['pendidikan'],$row['pekerjaan'], $row['tanggungan'], $row['pengeluaran']];
+              $data[]=[$row['tahun_2019'],$row['tahun_2020'], $row['tahun_2021'], $row['tahun_2022']];
             }
             
             //jumlah cluster
             $cluster = 3;
-            $variable_x = 'pendidikan';
-            $variable_x1 = 'pekerjaan';
-            $variable_y = 'tanggungan';
-            $variable_y1 = 'pengeluaran';
+            $variable_x = '2019';
+            $variable_x1 = '2020';
+            $variable_y = '2021';
+            $variable_y1 = '2022';
 
             $pusat = 
             [

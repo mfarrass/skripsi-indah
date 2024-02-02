@@ -1,16 +1,16 @@
 <?php
 // koneksi database
-$conn = mysqli_connect("localhost", "root", "", "indahkmeans");
+$conn = mysqli_connect("localhost", "root", "", "kmeans");
 
 // tambah barang
 if(isset($_POST['addnewkepkel'])){
   $namakk = $_POST['namakepkel'];
-  $pendidikan = $_POST['pendidikan'];
-  $pekerjaan = $_POST['pekerjaan'];
-  $tanggungan = $_POST['tanggungan'];
-  $pengeluaran = $_POST['pengeluaran'];
+  $tahun_2019 = $_POST['tahun_2019'];
+  $tahun_2020 = $_POST['tahun_2020'];
+  $tahun_2021 = $_POST['tahun_2021'];
+  $tahun_2022 = $_POST['tahun_2022'];
 
-  $addtotable = mysqli_query($conn, "INSERT into dt_kk (nama_kk, pendidikan, pekerjaan, tanggungan, pengeluaran) values('$namakk', '$pendidikan', '$pekerjaan', '$tanggungan', '$pengeluaran')");
+  $addtotable = mysqli_query($conn, "INSERT into data_prov (nama_kk, tahun_2019, tahun_2020, tahun_2021, tahun_2022) values('$namakk', '$tahun_2019', '$tahun_2020', '$tahun_2021', '$tahun_2022')");
   if($addtotable){
     header('location:input_kk.php');
   } else {
@@ -21,14 +21,14 @@ if(isset($_POST['addnewkepkel'])){
 
 // Edit Data KepKel
 if(isset($_POST['editdata-kk'])){
-  $idkk = $_POST['idkk'];
+  $idprov = $_POST['idprov'];
   $namakk = $_POST['namakepkel'];
-  $pendidikan = $_POST['pendidikan'];
-  $pekerjaan = $_POST['pekerjaan'];
-  $tanggungan = $_POST['tanggungan'];
-  $pengeluaran = $_POST['pengeluaran'];
+  $tahun_2019 = $_POST['tahun_2019'];
+  $tahun_2020 = $_POST['tahun_2020'];
+  $tahun_2021 = $_POST['tahun_2021'];
+  $tahun_2022 = $_POST['tahun_2022'];
 
-  $update = mysqli_query ($conn, "UPDATE dt_kk SET nama_kk='$namakk', pendidikan='$pendidikan', pekerjaan='$pekerjaan', tanggungan='$tanggungan', pengeluaran='$pengeluaran' WHERE id_kk='$idkk'");
+  $update = mysqli_query ($conn, "UPDATE data_prov SET nama_kk='$namakk', tahun_2019='$tahun_2019', tahun_2020='$tahun_2020', tahun_2021='$tahun_2021', tahun_2022='$tahun_2022' WHERE id_prov='$idprov'");
   if($update){
     header ('Location:input_kk.php');
   } else {
@@ -40,9 +40,9 @@ if(isset($_POST['editdata-kk'])){
 
 // Hapus Kepkel
 if(isset($_POST['hapusdata-kk'])){
-  $idkk = $_POST['idkk'];
+  $idprov = $_POST['idprov'];
 
-  $hapus = mysqli_query($conn, "DELETE FROM dt_kk WHERE id_kk = '$idkk'");
+  $hapus = mysqli_query($conn, "DELETE FROM data_prov WHERE id_prov = '$idprov'");
   if($hapus){
     header ('Location:input_kk.php');
   } else {
@@ -55,7 +55,7 @@ if(isset($_POST['hapusdata-kk'])){
 // Edit Data Lokasi
 if(isset($_POST['editdata-lok'])){
   $idlok = $_POST['idlok'];
-  $id_kk = $_POST['idkk'];
+  $id_prov = $_POST['idprov'];
   $alamat = $_POST['alamat'];
   $lat = $_POST['lat'];
   $longit = $_POST['longit'];
@@ -77,7 +77,7 @@ if(isset($_POST['barangmasuk'])){
   $lat = $_POST['lat'];
   $longit = $_POST['longit'];
 
-  $addtomasuk = mysqli_query($conn, "INSERT INTO dt_lok (id_kk, alamat, lat, longit) values ('$namanya', '$alamat', '$lat', '$longit')");
+  $addtomasuk = mysqli_query($conn, "INSERT INTO dt_lok (id_prov, alamat, lat, longit) values ('$namanya', '$alamat', '$lat', '$longit')");
   if($addtomasuk){
     header('location:masuk.php');
   } else {

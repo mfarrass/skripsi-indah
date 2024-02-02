@@ -91,10 +91,10 @@ require 'koneksi.php';
                                         <tbody>
                                             <?php
                                             $i=1;
-                                            $ambilsemuadatastock = mysqli_query($conn,"SELECT * FROM dt_lok m, dt_kk s WHERE s.id_kk = m.id_kk");
+                                            $ambilsemuadatastock = mysqli_query($conn,"SELECT * FROM dt_lok m, data_prov s WHERE s.id_prov = m.id_prov");
                                             while ($data = mysqli_fetch_array($ambilsemuadatastock)){
                                                 $idlok = $data['id_lok'];
-                                                $id_kk = $data['id_kk'];
+                                                $id_prov = $data['id_prov'];
                                                 $namakk = $data['nama_kk'];
                                                 $alamat = $data['alamat'];
                                                 $lat = $data['lat'];
@@ -138,7 +138,7 @@ require 'koneksi.php';
                                                     <input type="number" name="longit" class="form-control" value="<?= $longit?>" require>
                                                     <br>
                                                     <input type="hidden" name="idlok" value="<?=$idlok?>">
-                                                    <input type="hidden" name="idkk" value="<?=$id_kk?>">
+                                                    <input type="hidden" name="idprov" value="<?=$id_prov?>">
                                                     <button type="submit" class="btn btn-primary" name="editdata-lok">Submit</button>
                                                     </div>
                                                     </form>
@@ -152,7 +152,7 @@ require 'koneksi.php';
                                                 </div>
                                                     <!-- Modal Edit End -->
                                                 <!-- Button trigger modal Hapus-->
-                                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalhapus<?= $id_kk ?>">
+                                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalhapus<?= $id_prov ?>">
                                                 <i class="fas fa-trash"></i>
                                                 </button>
                                                 </td>
@@ -209,13 +209,13 @@ require 'koneksi.php';
 
                 <select name="namanya" class="form-control">
                     <?php
-                    $getdata = mysqli_query($conn,"SELECT * FROM dt_kk ORDER BY id_kk DESC");
+                    $getdata = mysqli_query($conn,"SELECT * FROM data_prov ORDER BY id_prov DESC");
                         while ($fetcharray = mysqli_fetch_array($getdata)){
                             $namakk = $fetcharray['nama_kk'];
-                            $idkk = $fetcharray['id_kk'];
+                            $idprov = $fetcharray['id_prov'];
                     ?>
 
-                        <option value="<?php echo $idkk ?>"><?php echo $namakk ?></option>
+                        <option value="<?php echo $idprov ?>"><?php echo $namakk ?></option>
 
                     <?php
                     }

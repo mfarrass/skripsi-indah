@@ -92,25 +92,25 @@ require 'koneksi.php';
                                         <tbody>
                                             <?php
                                             $i=1;
-                                            $ambilsemuadatastock = mysqli_query($conn,"SELECT * FROM dt_lok m, dt_kk s WHERE s.id_kk = m.id_kk");
+                                            $ambilsemuadatastock = mysqli_query($conn,"SELECT * FROM dt_lok m, data_prov s WHERE s.id_prov = m.id_prov");
                                             while ($data = mysqli_fetch_array($ambilsemuadatastock)){
                                                 $idlok = $data['id_lok'];
-                                                $id_kk = $data['id_kk'];
+                                                $id_prov = $data['id_prov'];
                                                 $namakk = $data['nama_kk'];
                                                 $alamat = $data['alamat'];
-                                                $pendidikan = $data['pendidikan'];
-                                                $pekerjaan = $data['pekerjaan'];
-                                                $tanggungan = $data['tanggungan'];
-                                                $pengeluaran = $data['pengeluaran'];
+                                                $tahun_2019 = $data['tahun_2019'];
+                                                $tahun_2020 = $data['tahun_2020'];
+                                                $tahun_2021 = $data['tahun_2021'];
+                                                $tahun_2022 = $data['tahun_2022'];
                                             ?>
                                             <tr>
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $namakk ?></td>
                                                 <td><?php echo $alamat ?></td>
-                                                <td><?php echo $pendidikan ?></td>
-                                                <td><?php echo $pekerjaan ?></td>
-                                                <td><?php echo $tanggungan ?></td>
-                                                <td><?php echo $pengeluaran ?></td>
+                                                <td><?php echo $tahun_2019 ?></td>
+                                                <td><?php echo $tahun_2020 ?></td>
+                                                <td><?php echo $tahun_2021 ?></td>
+                                                <td><?php echo $tahun_2022 ?></td>
 
                                             </tr>
                                             <?php

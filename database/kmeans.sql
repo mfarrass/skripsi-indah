@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Nov 2023 pada 10.25
--- Versi server: 10.4.17-MariaDB
--- Versi PHP: 8.0.0
+-- Waktu pembuatan: 02 Feb 2024 pada 17.30
+-- Versi server: 10.4.21-MariaDB
+-- Versi PHP: 7.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bayukmeans`
+-- Database: `kmeans`
 --
 
 -- --------------------------------------------------------
@@ -43,23 +43,23 @@ INSERT INTO `admin` (`id_admin`, `username`, `pass`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dt_kk`
+-- Struktur dari tabel `data_prov`
 --
 
-CREATE TABLE `dt_kk` (
-  `id_kk` int(11) NOT NULL,
+CREATE TABLE `data_prov` (
+  `id_prov` int(11) NOT NULL,
   `nama_kk` varchar(50) NOT NULL,
-  `pendidikan` int(11) NOT NULL,
-  `pekerjaan` int(11) NOT NULL,
-  `tanggungan` int(11) NOT NULL,
-  `pengeluaran` int(11) NOT NULL
+  `tahun_2019` int(11) NOT NULL,
+  `tahun_2020` int(11) NOT NULL,
+  `tahun_2021` int(11) NOT NULL,
+  `tahun_2022` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `dt_kk`
+-- Dumping data untuk tabel `data_prov`
 --
 
-INSERT INTO `dt_kk` (`id_kk`, `nama_kk`, `pendidikan`, `pekerjaan`, `tanggungan`, `pengeluaran`) VALUES
+INSERT INTO `data_prov` (`id_prov`, `nama_kk`, `tahun_2019`, `tahun_2020`, `tahun_2021`, `tahun_2022`) VALUES
 (1, 'Imam Suherman', 1, 2, 4, 1),
 (2, 'Widiarto', 2, 3, 3, 2),
 (3, 'Ahmad Saifudin', 2, 3, 2, 2),
@@ -120,7 +120,7 @@ INSERT INTO `dt_kk` (`id_kk`, `nama_kk`, `pendidikan`, `pekerjaan`, `tanggungan`
 
 CREATE TABLE `dt_lok` (
   `id_lok` int(11) NOT NULL,
-  `id_kk` int(11) NOT NULL,
+  `id_prov` int(11) NOT NULL,
   `alamat` varchar(150) NOT NULL,
   `lat` varchar(50) NOT NULL,
   `longit` varchar(50) NOT NULL
@@ -130,7 +130,7 @@ CREATE TABLE `dt_lok` (
 -- Dumping data untuk tabel `dt_lok`
 --
 
-INSERT INTO `dt_lok` (`id_lok`, `id_kk`, `alamat`, `lat`, `longit`) VALUES
+INSERT INTO `dt_lok` (`id_lok`, `id_prov`, `alamat`, `lat`, `longit`) VALUES
 (2, 1, 'Jl. Raya Tj. Barat No.12, RW.8, Pasar Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12510', '-6.2927783', '106.8418622'),
 (3, 2, 'Jl. Raya Tj. Barat No.17A, RW.8, Pejaten Tim., Kec. Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12510', '-6.2907243', '106.8416105'),
 (4, 3, 'Gg. Langgar 1 No.20, RT.11/RW.2, Pejaten Tim., Kec. Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12510', '-6.2894556', '106.8437339'),
@@ -153,10 +153,10 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indeks untuk tabel `dt_kk`
+-- Indeks untuk tabel `data_prov`
 --
-ALTER TABLE `dt_kk`
-  ADD PRIMARY KEY (`id_kk`);
+ALTER TABLE `data_prov`
+  ADD PRIMARY KEY (`id_prov`);
 
 --
 -- Indeks untuk tabel `dt_lok`
@@ -175,10 +175,10 @@ ALTER TABLE `admin`
   MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `dt_kk`
+-- AUTO_INCREMENT untuk tabel `data_prov`
 --
-ALTER TABLE `dt_kk`
-  MODIFY `id_kk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+ALTER TABLE `data_prov`
+  MODIFY `id_prov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT untuk tabel `dt_lok`

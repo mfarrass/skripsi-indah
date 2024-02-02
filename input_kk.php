@@ -41,7 +41,7 @@ require 'koneksi.php';
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="input_kk.php">Data Kepala Keluarga</a>
+                                    <a class="nav-link" href="input_kk.php">Data Provinsi</a>
                                     <a class="nav-link" href="masuk.php">Data Lokasi</a>
                                 </nav>
                             </div>
@@ -66,13 +66,13 @@ require 'koneksi.php';
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Data Kepala Keluarga</h1>
+                        <h1 class="mt-4">Data Provinsi</h1>
                     
                         <div class="card mb-4">
                             <div class="card-header">
                                 <!-- Button to Open the Modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah">
-                                    Tambah Data Kepala Keluarga
+                                    Tambah Data Provinsi
                                 </button>
                             </div>
                             <div class="card-body">
@@ -81,48 +81,48 @@ require 'koneksi.php';
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Nama Kepala Keluarga</th>
-                                                <th>Pendidikan</th>
-                                                <th>Pekerjaan</th>
-                                                <th>Tanggungan</th>
-                                                <th>Pengeluaran</th>
+                                                <th>Nama Provinsi</th>
+                                                <th>2019</th>
+                                                <th>2020</th>
+                                                <th>2021</th>
+                                                <th>2022</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                             $i = 1;
-                                            $ambilsemuadatastock = mysqli_query($conn,"SELECT * FROM dt_kk");
+                                            $ambilsemuadatastock = mysqli_query($conn,"SELECT * FROM data_prov");
                                             while ($data = mysqli_fetch_array($ambilsemuadatastock)){
                                                 $namakk = $data['nama_kk'];
-                                                $pendidikan = $data['pendidikan'];
-                                                $pekerjaan = $data['pekerjaan'];
-                                                $tanggungan = $data['tanggungan'];
-                                                $pengeluaran = $data['pengeluaran'];
-                                                $idkk = $data['id_kk'];
+                                                $tahun_2019 = $data['tahun_2019'];
+                                                $tahun_2020 = $data['tahun_2020'];
+                                                $tahun_2021 = $data['tahun_2021'];
+                                                $tahun_2022 = $data['tahun_2022'];
+                                                $idprov = $data['id_prov'];
                                             ?>
 
                                             <tr>
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $namakk ?></td>
-                                                <td><?php echo $pendidikan ?></td>
-                                                <td><?php echo $pekerjaan ?></td>
-                                                <td><?php echo $tanggungan ?></td>
-                                                <td><?php echo $pengeluaran ?></td>
+                                                <td><?php echo $tahun_2019 ?></td>
+                                                <td><?php echo $tahun_2020 ?></td>
+                                                <td><?php echo $tahun_2021 ?></td>
+                                                <td><?php echo $tahun_2022 ?></td>
                                                 <td>
                                                 <!-- Button trigger modal Edit-->
-                                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modaledit<?= $idkk ?>">
+                                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modaledit<?= $idprov ?>">
                                                 <i class="fas fa-edit"></i>
                                                 </button>
                                                 
                                                 <!-- Modal Edit -->
-                                                <div class="modal fade" id="modaledit<?= $idkk ?>">
+                                                <div class="modal fade" id="modaledit<?= $idprov ?>">
                                                 <div class="modal-dialog">
                                                 <div class="modal-content">
                                                 
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
-                                                    <h4 class="modal-title">Edit Data Kepala Keluarga</h4>
+                                                    <h4 class="modal-title">Edit Data Provinsi</h4>
                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                     </div>
                                                     
@@ -130,22 +130,22 @@ require 'koneksi.php';
                                                     <!-- Modal Tambah body -->
                                                     <form method="post">
                                                     <div class="modal-body">
-                                                    <label for="namakepkel">Nama Kepala Keluarga</label>
+                                                    <label for="namakepkel">Nama Provinsi</label>
                                                     <input type="text" name="namakepkel" value="<?= $namakk?>" class="form-control" require>
                                                     <br>
-                                                    <label for="pendidikan">Pendidikan</label>
-                                                    <input type="number" name="pendidikan" class="form-control" value="<?= $pendidikan?>" require>
+                                                    <label for="tahun_2019">tahun_2019</label>
+                                                    <input type="number" name="tahun_2019" class="form-control" value="<?= $tahun_2019?>" require>
                                                     <br>
-                                                    <label for="pekerjaan">Pekerjaan</label>
-                                                    <input type="number" name="pekerjaan" class="form-control" value="<?= $pekerjaan?>" require>
+                                                    <label for="tahun_2020">tahun_2020</label>
+                                                    <input type="number" name="tahun_2020" class="form-control" value="<?= $tahun_2020?>" require>
                                                     <br>
-                                                    <label for="tanggungan">Tanggungan</label>
-                                                    <input type="number" name="tanggungan" class="form-control" value="<?= $tanggungan?>" require>
+                                                    <label for="tahun_2021">tahun_2021</label>
+                                                    <input type="number" name="tahun_2021" class="form-control" value="<?= $tahun_2021?>" require>
                                                     <br>
-                                                    <label for="pengeluaran">Pengeluaran</label>
-                                                    <input type="number" name="pengeluaran" class="form-control" value="<?= $pengeluaran?>" require>
+                                                    <label for="tahun_2022">tahun_2022</label>
+                                                    <input type="number" name="tahun_2022" class="form-control" value="<?= $tahun_2022?>" require>
                                                     <br>
-                                                    <input type="hidden" name="idkk" value="<?=$idkk?>">
+                                                    <input type="hidden" name="idprov" value="<?=$idprov?>">
                                                     <button type="submit" class="btn btn-primary" name="editdata-kk">Submit</button>
                                                     </div>
                                                     </form>
@@ -162,16 +162,16 @@ require 'koneksi.php';
                                                 </div>
 
                                                 <!-- button trigger modal hapus -->
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalhapus<?= $idkk ?>">
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalhapus<?= $idprov ?>">
                                                 <i class="fas fa-trash"></i>
                                                 </button>
-                                                <div class="modal fade" id="modalhapus<?= $idkk ?>">
+                                                <div class="modal fade" id="modalhapus<?= $idprov ?>">
                                                 <div class="modal-dialog">
                                                 <div class="modal-content">
                                                 
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
-                                                    <h4 class="modal-title">Hapus Data Kepala Keluarga</h4>
+                                                    <h4 class="modal-title">Hapus Data Provinsi</h4>
                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                     </div>
                                                     
@@ -187,7 +187,7 @@ require 'koneksi.php';
                                                         </h5>
                                                         <br>
                                                         <br>
-                                                    <input type="hidden" name="idkk" value="<?=$idkk?>">
+                                                    <input type="hidden" name="idprov" value="<?=$idprov?>">
                                                     <button type="submit" class="btn btn-primary" name="hapusdata-kk">Submit</button>
                                                     </div>
                                                     </form>
@@ -246,7 +246,7 @@ require 'koneksi.php';
             
                 <!-- Modal Header -->
                 <div class="modal-header">
-                <h4 class="modal-title">Tambah Data Kepala Keluarga</h4>
+                <h4 class="modal-title">Tambah Data Provinsi</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 
@@ -254,16 +254,16 @@ require 'koneksi.php';
                 <!-- Modal Tambah body -->
                 <form method="post">
                 <div class="modal-body">
-                <input type="text" name="namakepkel" placeholder="Nama Kepala Keluarga" class="form-control" require>
+                <input type="text" name="namakepkel" placeholder="Nama Provinsi" class="form-control" require>
                 <br>
-                <!-- <input type="text" name="deskripsi" placeholder="Pekerjaan" class="form-control" require> -->
-                <input type="number" name="pendidikan" class="form-control" placeholder="Pendidikan (1/2/3/4)" require>
+                <!-- <input type="text" name="deskripsi" placeholder="tahun_2020" class="form-control" require> -->
+                <input type="number" name="tahun_2019" class="form-control" placeholder="tahun_2019 (1/2/3/4)" require>
                 <br>
-                <input type="number" name="pekerjaan" class="form-control" placeholder="Pekerjaan (1/2/3/4)" require>
+                <input type="number" name="tahun_2020" class="form-control" placeholder="tahun_2020 (1/2/3/4)" require>
                 <br>
-                <input type="number" name="tanggungan" class="form-control" placeholder="Tanggungan" require>
+                <input type="number" name="tahun_2021" class="form-control" placeholder="tahun_2021" require>
                 <br>
-                <input type="number" name="pengeluaran" class="form-control" placeholder="Pengeluaran (1/2/3/4)" require>
+                <input type="number" name="tahun_2022" class="form-control" placeholder="tahun_2022 (1/2/3/4)" require>
                 <br>
                 <button type="submit" class="btn btn-primary" name="addnewkepkel">Submit</button>
                 </div>
